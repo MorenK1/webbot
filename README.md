@@ -1,3 +1,5 @@
+NOTE: This is the orginal decription, I'll leave it here because it's better than anything i can make and the onky dfference is that this version is built for Geckodriver and not Chromimum
+
 # webbot 
 
 [![Downloads](https://pepy.tech/badge/webbot)](https://pepy.tech/project/webbot) ![Downloads](https://pepy.tech/badge/webbot/week)    [![](https://img.shields.io/readthedocs/webbot.svg?style=plastic)](https://webbot.readthedocs.io/en/latest/)  [![](https://img.shields.io/github/languages/code-size/nateshmbhat/webbot.svg?style=plastic)](https://github.com/nateshmbhat/webbot)  [![](https://img.shields.io/github/license/nateshmbhat/webbot?style=plastic)](https://github.com/nateshmbhat/webbot) [![](https://img.shields.io/pypi/v/webbot.svg?style=plastic)](https://github.com/nateshmbhat/webbot) [![](https://img.shields.io/github/languages/top/nateshmbhat/webbot.svg?style=plastic)](https://github.com/nateshmbhat/webbot) [![](https://img.shields.io/badge/author-nateshmbhat-green.svg)](https://github.com/nateshmbhat)
