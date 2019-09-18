@@ -31,31 +31,19 @@ class Browser:
     
     '''
 
-    def __init__(self , showWindow = True ):
-        options = webdriver.ChromeOptions()
-        options.add_argument("--disable-dev-shm-usage") ;
-        options.add_argument("--no-sandbox") ;
-
+   def __init__(self , showWindow = True, prefs=None):
+        options = webdriver.FirefoxOptions()
+        
         if(not showWindow):
             options.set_headless(headless=True) ; 
-
-        if sys.platform == 'linux' or sys.platform == 'linux2':
-            driverfilename = 'chrome_linux'
-        elif sys.platform == 'win32':
-            driverfilename = 'chrome_windows.exe'
-        elif sys.platform == 'darwin':
-            driverfilename = 'chrome_mac'
-        driverpath =  os.path.join(os.path.split(__file__)[0] , 'drivers{0}{1}'.format(os.path.sep , driverfilename))
-
-        os.chmod(driverpath , 0o755 ) 
-
-        self.driver = webdriver.Chrome(executable_path=driverpath , chrome_options=options)
+        if(prefs):
+            for pref, val in prefs.items():
+                options.set_preference(pref, val)
+        self.driver = webdriver.Firefox(firefox_options=options)
         self.Key = Keys ;
         self.errors = list() ; 
 
-
-        [setattr(self , function  , getattr(self.driver , function) ) for function in ['add_cookie' ,'delete_all_cookies','delete_cookie' , 'execute_script' , 'execute_async_script' ,'fullscreen_window','get_cookie' ,'get_cookies','get_log','get_network_conditions','get_screenshot_as_base64' ,'get_screenshot_as_file','get_screenshot_as_png','get_window_position','get_window_rect','get_window_size','maximize_window','minimize_window','implicitly_wait','quit','refresh','save_screenshot','set_network_conditions','set_page_load_timeout','set_script_timeout','set_window_position','set_window_rect','start_client','start_session','stop_client','switch_to_alert']]
-
+        [setattr(self , function  , getattr(self.driver , function) ) for function in ['add_cookie' ,'delete_all_cookies','delete_cookie' , 'execute_script' , 'execute_async_script' ,'fullscreen_window','get_cookie' ,'get_cookies','get_log','get_screenshot_as_base64' ,'get_screenshot_as_file','get_screenshot_as_png','get_window_position','get_window_rect','get_window_size','maximize_window','minimize_window','implicitly_wait','quit','refresh','save_screenshot','set_page_load_timeout','set_script_timeout','set_window_position','set_window_rect','start_client','start_session','stop_client','switch_to_alert']]
 
     def close_current_tab(self):
         '''Closes the current tab which the driver is controlling'''
